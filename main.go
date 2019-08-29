@@ -74,10 +74,15 @@ func handleConnect(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func handleTest(w http.ResponseWriter, r *http.Request) {
+	log.Println("====http request: /test======")
+}
+
 func main() {
 	log.Println("=====start=====")
 	flag.Parse()
 	log.SetFlags(0)
 	http.HandleFunc("/ws", handleConnect)
+	http.HandleFunc("/test", handleTest)
 	log.Fatal(http.ListenAndServe(*addr, nil))
 }
